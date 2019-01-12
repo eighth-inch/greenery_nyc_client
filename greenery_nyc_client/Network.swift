@@ -12,6 +12,9 @@ import Alamofire
 protocol NetworkInterface : class {
     func getPlants(ofTypes types: Set<Plant.LightLevel>, completion: @escaping (Data?, Error?) -> ())
     func getPlant(withId id: String, completion: @escaping (Data?, Error?) -> ())
+    func post(plantPayload payload: [String : Any], completion: @escaping (Data?, Error?) -> ())
+    func put(plantId id: String, plantPayload payload: [String : Any], completion: @escaping (Data?, Error?) -> ())
+    func deletePlant(withId id: String, completion: @escaping (Data?, Error?) -> ())
 }
 
 class Network {
@@ -52,6 +55,50 @@ extension Network : NetworkInterface {
         
         Alamofire
             .request(url)
+            .responseData { (response) in
+                switch response.result {
+                case .success(let data):
+                    completion(data, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                }
+        }
+    }
+    
+    func post(plantPayload payload: [String : Any], completion: @escaping (Data?, Error?) -> ()) {
+        
+        Alamofire
+            .request(url, method: .post, parameters: payload)
+            .responseData { (response) in
+                switch response.result {
+                case .success(let data):
+                    completion(data, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                }
+        }
+    }
+    
+    func put(plantId id: String, plantPayload payload: [String : Any], completion: @escaping (Data?, Error?) -> ()) {
+        let url = self.url.appendingPathComponent(id)
+        
+        Alamofire
+            .request(url, method: .put, parameters: payload)
+            .responseData { (response) in
+                switch response.result {
+                case .success(let data):
+                    completion(data, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                }
+        }
+    }
+    
+    func deletePlant(withId id: String, completion: @escaping (Data?, Error?) -> ()) {
+        let url = self.url.appendingPathComponent(id)
+        
+        Alamofire
+            .request(url, method: .delete)
             .responseData { (response) in
                 switch response.result {
                 case .success(let data):

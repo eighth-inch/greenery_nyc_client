@@ -8,12 +8,14 @@
 
 import Foundation
 
-protocol ResponseHandlerInterface {
-    func handleMultiPlantsResponse(_ response: (data: Data?, error: Error?)) -> ([Plant]?, Error?)
+protocol NetworkParserInterface {
+    func handleMultiPlantResponse(_ response: (data: Data?, error: Error?)) -> ([Plant]?, Error?)
     func handleSinglePlantResponse(_ response: (data: Data?, error: Error?)) -> (Plant?, Error?)
+    func handleNoContentResponse(_ response: (data: Data?, error: Error?)) -> (Error?)
+    func payload(for plant: Plant) -> [String : Any]
 }
 
-class ResponseHandler {
+class NetworkParser {
  
     private static let millisecondPreciseDate: DateFormatter = {
         let formatter = DateFormatter()
@@ -24,28 +26,28 @@ class ResponseHandler {
         return formatter
     }()
     
-    static let encoder: JSONEncoder = {
+    private static let encoder: JSONEncoder = {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .formatted(millisecondPreciseDate)
         encoder.outputFormatting = .prettyPrinted
         return encoder
     }()
     
-    static let decoder: JSONDecoder = {
+    private static let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(millisecondPreciseDate)
         return decoder
     }()
     
-    struct PlantsResponse : Decodable {
+    private struct PlantsResponse : Decodable {
         let plants: [Plant]
     }
     
-    struct PlantResponse : Decodable {
+    private struct PlantResponse : Decodable {
         let plant: Plant
     }
     
-    struct PlantPayload : Encodable {
+    private struct PlantPayload : Encodable {
         let plant: Element
         
         struct Element : Encodable {
@@ -55,14 +57,14 @@ class ResponseHandler {
     }
 }
 
-extension ResponseHandler : ResponseHandlerInterface {
+extension NetworkParser : NetworkParserInterface {
     
-    func handleMultiPlantsResponse(_ response: (data: Data?, error: Error?)) -> ([Plant]?, Error?) {
+    func handleMultiPlantResponse(_ response: (data: Data?, error: Error?)) -> ([Plant]?, Error?) {
         guard let data = response.data else {return (nil, response.error)}
         
         do {
-            let payload = try ResponseHandler.decoder.decode(PlantsResponse.self, from: data)
-            return (payload.plants, response.error)
+            let content = try NetworkParser.decoder.decode(PlantsResponse.self, from: data)
+            return (content.plants, response.error)
         } catch {
             return (nil, error)
         }
@@ -72,10 +74,25 @@ extension ResponseHandler : ResponseHandlerInterface {
         guard let data = response.data else {return (nil, response.error)}
         
         do {
-            let payload = try ResponseHandler.decoder.decode(PlantResponse.self, from: data)
-            return (payload.plant, response.error)
+            let content = try NetworkParser.decoder.decode(Plant.self, from: data)
+            return (content, response.error)
         } catch {
             return (nil, error)
         }
+    }
+    
+    func handleNoContentResponse(_ response: (data: Data?, error: Error?)) -> (Error?) {
+        switch response.error {
+        case .some(let error): return error
+        case .none:
+            //TODO: Custom error handling
+            return nil
+        }
+    }
+    
+    func payload(for plant: Plant) -> [String : Any] {
+        let newElement = PlantPayload.Element(name: "Test", light_required: .med)
+        let payload = try! NetworkParser.encoder.encodeAsDictionary(PlantPayload(plant: newElement))
+        return payload
     }
 }

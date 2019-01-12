@@ -16,9 +16,10 @@ class NetworkServiceAcceptanceTests: QuickSpec {
 
     private var subject: NetworkService!
     private var interface: Network!
-    private var responseHandler: ResponseHandler!
+    private var parser: NetworkParser!
     private var multiResponse: ([Plant]?, Error?)?
     private var singleResponse: (Plant?, Error?)?
+    private var noContentResponse: Error?
     
     override func spec() {
         
@@ -35,13 +36,13 @@ class NetworkServiceAcceptanceTests: QuickSpec {
             beforeEach {
                 let url = URL(string: "https://greenery-nyc-test-dev.herokuapp.com/api/plants")!
                 self.interface = Network(with: url)
-                self.responseHandler = ResponseHandler()
-                self.subject = NetworkService(with: self.interface, responseHandler: self.responseHandler)
+                self.parser = NetworkParser()
+                self.subject = NetworkService(with: self.interface, parser: self.parser)
             }
             
             afterEach {
                 self.interface = nil
-                self.responseHandler = nil
+                self.parser = nil
                 self.subject = nil
             }
             
@@ -218,8 +219,8 @@ class NetworkServiceAcceptanceTests: QuickSpec {
             beforeEach {
                 let url = URL(string: "https://greenery-nyc-test-dev.herokuapp.com/api/plants")!
                 self.interface = Network(with: url)
-                self.responseHandler = ResponseHandler()
-                self.subject = NetworkService(with: self.interface, responseHandler: self.responseHandler)
+                self.parser = NetworkParser()
+                self.subject = NetworkService(with: self.interface, parser: self.parser)
                 
                 waitUntil { done in
                     self.subject.getPlants(ofTypes: Set(Plant.LightLevel.allCases)) { response, error in
@@ -232,7 +233,7 @@ class NetworkServiceAcceptanceTests: QuickSpec {
             
             afterEach {
                 self.interface = nil
-                self.responseHandler = nil
+                self.parser = nil
                 self.subject = nil
                 availablePlants = nil
             }
@@ -266,6 +267,118 @@ class NetworkServiceAcceptanceTests: QuickSpec {
                 
                 it("does not return an error") {
                     expect(self.singleResponse?.1).to(beNil())
+                }
+            }
+            
+            context("when creating a new plant") {
+                
+                let newPlantSubmission = Plant(id: UUID().uuidString, name: "Clementine Tree", lightRequired: .low, createdAt: Date(), updatedAt: Date())
+                var newlyCreatedPlant: Plant?
+                
+                beforeEach {
+                    waitUntil { done in
+                        self.subject.create(newPlantSubmission, completion: { (response, error) in
+                            self.singleResponse = (response, error)
+                            newlyCreatedPlant = response
+                            done()
+                        })
+                    }
+                }
+                
+                afterEach {
+                    waitUntil { done in
+                        guard let plantToDelete = newlyCreatedPlant else {return}
+                        self.subject.delete(plantToDelete) {error in
+                            print(error?.localizedDescription ?? "deleted test plant successfully")
+                            done()
+                        }
+                    }
+                }
+                
+                it("does not return an error") {
+                    expect(self.singleResponse?.1).to(beNil())
+                }
+                
+                it("returns a created plant") {
+                    expect(self.singleResponse?.0).toNot(beNil())
+                }
+                
+                it("returns a created plant with matching name") {
+                    expect(self.singleResponse?.0?.name) == newPlantSubmission.name
+                }
+                
+                it("returns a created plant with matching light requirement") {
+                    expect(self.singleResponse?.0?.lightRequired) == newPlantSubmission.lightRequired
+                }
+                
+                it("contains the new content when queried") {
+                    waitUntil { done in
+                        self.subject.getPlant(withId: self.singleResponse?.0?.id ?? "") { response, error in
+                            expect(response) == self.singleResponse?.0
+                            done()
+                        }
+                    }
+                }
+                
+                context("when updating a plant") {
+                    
+                    let newPlantSubmission = Plant(id: UUID().uuidString, name: "Clementine Tree", lightRequired: .low, createdAt: Date(), updatedAt: Date())
+                    var newlyCreatedPlant: Plant!
+                    var updatePlantSubmission: Plant!
+                    
+                    beforeEach {
+                        waitUntil { done in
+                            self.subject.create(newPlantSubmission) { (response, error) in
+                                newlyCreatedPlant = response
+                                
+                                updatePlantSubmission = Plant(id: newlyCreatedPlant.id,
+                                                              name: "Updated Name",
+                                                              lightRequired: .high,
+                                                              createdAt: newlyCreatedPlant.createdAt,
+                                                              updatedAt: newlyCreatedPlant.updatedAt)
+                                
+                                self.subject.update(updatePlantSubmission) { (response, error) in
+                                    self.singleResponse = (response, error)
+                                    done()
+                                }
+                            }
+                        }
+                    }
+                    
+                    afterEach {
+                        waitUntil { done in
+                            guard let plantToDelete = newlyCreatedPlant else {return}
+                            self.subject.delete(plantToDelete) {error in
+                                print(error?.localizedDescription ?? "deleted test plant successfully")
+                                done()
+                            }
+                        }
+                    }
+                    
+                    it("does not return an error") {
+                        expect(self.singleResponse?.1).to(beNil())
+                    }
+                    
+                    it("returns an updated plant") {
+                        expect(self.singleResponse?.0).toNot(beNil())
+                    }
+                    
+                    it("returns an updated plant with the updated name") {
+                        expect(self.singleResponse?.0?.name) == updatePlantSubmission.name
+                    }
+                    
+                    it("returns a created plant with the updated light requirement") {
+                        expect(self.singleResponse?.0?.lightRequired) == updatePlantSubmission.lightRequired
+                    }
+                    
+                    it("contains the updated content when queried") {
+                        waitUntil { done in
+                            self.subject.getPlant(withId: self.singleResponse?.0?.id ?? "") { response, error in
+                                expect(response) == self.singleResponse?.0
+                                done()
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -11,7 +11,7 @@
 		27A64F8A21EA4BB3000C7A6D /* greenery_nyc_client.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A64F7C21EA4BB3000C7A6D /* greenery_nyc_client.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27A64F9421EA4D5F000C7A6D /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9321EA4D5F000C7A6D /* Network.swift */; };
 		27A64F9621EA4DAB000C7A6D /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9521EA4DAB000C7A6D /* Plant.swift */; };
-		27A64F9821EA4E49000C7A6D /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9721EA4E49000C7A6D /* ResponseHandler.swift */; };
+		27A64F9821EA4E49000C7A6D /* NetworkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9721EA4E49000C7A6D /* NetworkParser.swift */; };
 		27A64F9A21EA545C000C7A6D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9921EA545C000C7A6D /* NetworkService.swift */; };
 		27A64F9C21EA55F8000C7A6D /* NetworkServiceAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9B21EA55F8000C7A6D /* NetworkServiceAcceptanceTests.swift */; };
 		27A64F9E21EA6A9B000C7A6D /* JSONEncoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9D21EA6A9B000C7A6D /* JSONEncoderExtension.swift */; };
@@ -37,7 +37,7 @@
 		27A64F8921EA4BB3000C7A6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27A64F9321EA4D5F000C7A6D /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		27A64F9521EA4DAB000C7A6D /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
-		27A64F9721EA4E49000C7A6D /* ResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
+		27A64F9721EA4E49000C7A6D /* NetworkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkParser.swift; sourceTree = "<group>"; };
 		27A64F9921EA545C000C7A6D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		27A64F9B21EA55F8000C7A6D /* NetworkServiceAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceAcceptanceTests.swift; sourceTree = "<group>"; };
 		27A64F9D21EA6A9B000C7A6D /* JSONEncoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoderExtension.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 				27A64F7D21EA4BB3000C7A6D /* Info.plist */,
 				27A64F9321EA4D5F000C7A6D /* Network.swift */,
 				27A64F9521EA4DAB000C7A6D /* Plant.swift */,
-				27A64F9721EA4E49000C7A6D /* ResponseHandler.swift */,
+				27A64F9721EA4E49000C7A6D /* NetworkParser.swift */,
 				27A64F9921EA545C000C7A6D /* NetworkService.swift */,
 				27A64F9D21EA6A9B000C7A6D /* JSONEncoderExtension.swift */,
 			);
@@ -309,7 +309,7 @@
 			files = (
 				27A64F9E21EA6A9B000C7A6D /* JSONEncoderExtension.swift in Sources */,
 				27A64F9421EA4D5F000C7A6D /* Network.swift in Sources */,
-				27A64F9821EA4E49000C7A6D /* ResponseHandler.swift in Sources */,
+				27A64F9821EA4E49000C7A6D /* NetworkParser.swift in Sources */,
 				27A64F9A21EA545C000C7A6D /* NetworkService.swift in Sources */,
 				27A64F9621EA4DAB000C7A6D /* Plant.swift in Sources */,
 			);
