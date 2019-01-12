@@ -1,0 +1,6 @@
+framework module Pods_greenery_nyc_clientTests {
+  umbrella header "Pods-greenery_nyc_clientTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

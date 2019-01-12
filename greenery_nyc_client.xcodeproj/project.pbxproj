@@ -8,8 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		27A64F8321EA4BB3000C7A6D /* greenery_nyc_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A64F7921EA4BB3000C7A6D /* greenery_nyc_client.framework */; };
-		27A64F8821EA4BB3000C7A6D /* greenery_nyc_clientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F8721EA4BB3000C7A6D /* greenery_nyc_clientTests.swift */; };
 		27A64F8A21EA4BB3000C7A6D /* greenery_nyc_client.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A64F7C21EA4BB3000C7A6D /* greenery_nyc_client.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27A64F9421EA4D5F000C7A6D /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9321EA4D5F000C7A6D /* Network.swift */; };
+		27A64F9621EA4DAB000C7A6D /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9521EA4DAB000C7A6D /* Plant.swift */; };
+		27A64F9821EA4E49000C7A6D /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9721EA4E49000C7A6D /* ResponseHandler.swift */; };
+		27A64F9A21EA545C000C7A6D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9921EA545C000C7A6D /* NetworkService.swift */; };
+		27A64F9C21EA55F8000C7A6D /* NetworkServiceAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9B21EA55F8000C7A6D /* NetworkServiceAcceptanceTests.swift */; };
+		73857CD598FBE702E5AE54A8 /* Pods_greenery_nyc_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E330AA29016EE5C399E552 /* Pods_greenery_nyc_client.framework */; };
+		B3ABB2C6505051824ADAF956 /* Pods_greenery_nyc_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC3771DBB03F2C1DDBFB69E /* Pods_greenery_nyc_clientTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +33,18 @@
 		27A64F7C21EA4BB3000C7A6D /* greenery_nyc_client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = greenery_nyc_client.h; sourceTree = "<group>"; };
 		27A64F7D21EA4BB3000C7A6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27A64F8221EA4BB3000C7A6D /* greenery_nyc_clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = greenery_nyc_clientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		27A64F8721EA4BB3000C7A6D /* greenery_nyc_clientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = greenery_nyc_clientTests.swift; sourceTree = "<group>"; };
 		27A64F8921EA4BB3000C7A6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27A64F9321EA4D5F000C7A6D /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		27A64F9521EA4DAB000C7A6D /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		27A64F9721EA4E49000C7A6D /* ResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
+		27A64F9921EA545C000C7A6D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		27A64F9B21EA55F8000C7A6D /* NetworkServiceAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceAcceptanceTests.swift; sourceTree = "<group>"; };
+		A90C02D21E5976CFD3CC444E /* Pods-greenery_nyc_clientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greenery_nyc_clientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-greenery_nyc_clientTests/Pods-greenery_nyc_clientTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AFC3771DBB03F2C1DDBFB69E /* Pods_greenery_nyc_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_greenery_nyc_clientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7E69F7ECFCA824B63DBB571 /* Pods-greenery_nyc_client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greenery_nyc_client.release.xcconfig"; path = "Pods/Target Support Files/Pods-greenery_nyc_client/Pods-greenery_nyc_client.release.xcconfig"; sourceTree = "<group>"; };
+		C4E330AA29016EE5C399E552 /* Pods_greenery_nyc_client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_greenery_nyc_client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8548DF1E8F6BB44680556C0 /* Pods-greenery_nyc_client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greenery_nyc_client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-greenery_nyc_client/Pods-greenery_nyc_client.debug.xcconfig"; sourceTree = "<group>"; };
+		FA0023C42913DFCFE4E5A983 /* Pods-greenery_nyc_clientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greenery_nyc_clientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-greenery_nyc_clientTests/Pods-greenery_nyc_clientTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73857CD598FBE702E5AE54A8 /* Pods_greenery_nyc_client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27A64F8321EA4BB3000C7A6D /* greenery_nyc_client.framework in Frameworks */,
+				B3ABB2C6505051824ADAF956 /* Pods_greenery_nyc_clientTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +74,8 @@
 				27A64F7B21EA4BB3000C7A6D /* greenery_nyc_client */,
 				27A64F8621EA4BB3000C7A6D /* greenery_nyc_clientTests */,
 				27A64F7A21EA4BB3000C7A6D /* Products */,
+				F02977DA8E99895D39E0EB47 /* Pods */,
+				9C6F74AC6B1934BEE4F17B08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +93,10 @@
 			children = (
 				27A64F7C21EA4BB3000C7A6D /* greenery_nyc_client.h */,
 				27A64F7D21EA4BB3000C7A6D /* Info.plist */,
+				27A64F9321EA4D5F000C7A6D /* Network.swift */,
+				27A64F9521EA4DAB000C7A6D /* Plant.swift */,
+				27A64F9721EA4E49000C7A6D /* ResponseHandler.swift */,
+				27A64F9921EA545C000C7A6D /* NetworkService.swift */,
 			);
 			path = greenery_nyc_client;
 			sourceTree = "<group>";
@@ -80,10 +104,30 @@
 		27A64F8621EA4BB3000C7A6D /* greenery_nyc_clientTests */ = {
 			isa = PBXGroup;
 			children = (
-				27A64F8721EA4BB3000C7A6D /* greenery_nyc_clientTests.swift */,
 				27A64F8921EA4BB3000C7A6D /* Info.plist */,
+				27A64F9B21EA55F8000C7A6D /* NetworkServiceAcceptanceTests.swift */,
 			);
 			path = greenery_nyc_clientTests;
+			sourceTree = "<group>";
+		};
+		9C6F74AC6B1934BEE4F17B08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4E330AA29016EE5C399E552 /* Pods_greenery_nyc_client.framework */,
+				AFC3771DBB03F2C1DDBFB69E /* Pods_greenery_nyc_clientTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F02977DA8E99895D39E0EB47 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F8548DF1E8F6BB44680556C0 /* Pods-greenery_nyc_client.debug.xcconfig */,
+				B7E69F7ECFCA824B63DBB571 /* Pods-greenery_nyc_client.release.xcconfig */,
+				A90C02D21E5976CFD3CC444E /* Pods-greenery_nyc_clientTests.debug.xcconfig */,
+				FA0023C42913DFCFE4E5A983 /* Pods-greenery_nyc_clientTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,6 +148,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27A64F8D21EA4BB3000C7A6D /* Build configuration list for PBXNativeTarget "greenery_nyc_client" */;
 			buildPhases = (
+				38C24BCB0F812E9FD6F3CD44 /* [CP] Check Pods Manifest.lock */,
 				27A64F7421EA4BB3000C7A6D /* Headers */,
 				27A64F7521EA4BB3000C7A6D /* Sources */,
 				27A64F7621EA4BB3000C7A6D /* Frameworks */,
@@ -122,9 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27A64F9021EA4BB3000C7A6D /* Build configuration list for PBXNativeTarget "greenery_nyc_clientTests" */;
 			buildPhases = (
+				D8CF94CEA4DC6BEEF8190B78 /* [CP] Check Pods Manifest.lock */,
 				27A64F7E21EA4BB3000C7A6D /* Sources */,
 				27A64F7F21EA4BB3000C7A6D /* Frameworks */,
 				27A64F8021EA4BB3000C7A6D /* Resources */,
+				8F0182C180C60B4D4DED95C7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,9 +195,11 @@
 				TargetAttributes = {
 					27A64F7821EA4BB3000C7A6D = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					27A64F8121EA4BB3000C7A6D = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -189,11 +238,76 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38C24BCB0F812E9FD6F3CD44 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-greenery_nyc_client-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F0182C180C60B4D4DED95C7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-greenery_nyc_clientTests/Pods-greenery_nyc_clientTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-greenery_nyc_clientTests/Pods-greenery_nyc_clientTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8CF94CEA4DC6BEEF8190B78 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-greenery_nyc_clientTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		27A64F7521EA4BB3000C7A6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27A64F9421EA4D5F000C7A6D /* Network.swift in Sources */,
+				27A64F9821EA4E49000C7A6D /* ResponseHandler.swift in Sources */,
+				27A64F9A21EA545C000C7A6D /* NetworkService.swift in Sources */,
+				27A64F9621EA4DAB000C7A6D /* Plant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27A64F8821EA4BB3000C7A6D /* greenery_nyc_clientTests.swift in Sources */,
+				27A64F9C21EA55F8000C7A6D /* NetworkServiceAcceptanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +454,9 @@
 		};
 		27A64F8E21EA4BB3000C7A6D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8548DF1E8F6BB44680556C0 /* Pods-greenery_nyc_client.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +474,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "nyc.cruxcode.greenery-nyc-client";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,7 +482,9 @@
 		};
 		27A64F8F21EA4BB3000C7A6D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7E69F7ECFCA824B63DBB571 /* Pods-greenery_nyc_client.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -390,7 +509,10 @@
 		};
 		27A64F9121EA4BB3000C7A6D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A90C02D21E5976CFD3CC444E /* Pods-greenery_nyc_clientTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AV5R9X3BW5;
 				INFOPLIST_FILE = greenery_nyc_clientTests/Info.plist;
@@ -401,6 +523,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "nyc.cruxcode.greenery-nyc-clientTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -408,7 +531,10 @@
 		};
 		27A64F9221EA4BB3000C7A6D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA0023C42913DFCFE4E5A983 /* Pods-greenery_nyc_clientTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AV5R9X3BW5;
 				INFOPLIST_FILE = greenery_nyc_clientTests/Info.plist;
