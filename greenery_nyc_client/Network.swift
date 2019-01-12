@@ -11,6 +11,7 @@ import Alamofire
 
 protocol NetworkInterface : class {
     func getPlants(ofTypes types: Set<Plant.LightLevel>, completion: @escaping (Data?, Error?) -> ())
+    func getPlant(withId id: String, completion: @escaping (Data?, Error?) -> ())
 }
 
 class Network {
@@ -36,6 +37,21 @@ extension Network : NetworkInterface {
         
         Alamofire
             .request(url, parameters: parameters, encoding: URLEncoding.default)
+            .responseData { (response) in
+                switch response.result {
+                case .success(let data):
+                    completion(data, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                }
+        }
+    }
+    
+    func getPlant(withId id: String, completion: @escaping (Data?, Error?) -> ()) {
+        let url = self.url.appendingPathComponent(id)
+        
+        Alamofire
+            .request(url)
             .responseData { (response) in
                 switch response.result {
                 case .success(let data):

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Plant : Codable, CustomStringConvertible, CustomDebugStringConvertible {
+struct Plant : Codable, Equatable, CustomStringConvertible, CustomDebugStringConvertible {
     
     let id: String
     let name: String

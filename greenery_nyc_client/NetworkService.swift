@@ -10,6 +10,7 @@ import Foundation
 
 protocol NetworkServiceInterface : class {
     func getPlants(ofTypes types: Set<Plant.LightLevel>, completion: @escaping ([Plant]?, Error?) -> ())
+    func getPlant(withId id: String, completion: @escaping (Plant?, Error?) -> ())
 }
 
 class NetworkService {
@@ -29,6 +30,13 @@ extension NetworkService : NetworkServiceInterface {
     func getPlants(ofTypes types: Set<Plant.LightLevel>, completion: @escaping ([Plant]?, Error?) -> ()) {
         network.getPlants(ofTypes: types) { (response, error) in
             let parsedResponse = self.responseHandler.handleMultiPlantsResponse((response, error))
+            completion(parsedResponse.0, parsedResponse.1)
+        }
+    }
+    
+    func getPlant(withId id: String, completion: @escaping (Plant?, Error?) -> ()) {
+        network.getPlant(withId: id) { (response, error) in
+            let parsedResponse = self.responseHandler.handleSinglePlantResponse((response, error))
             completion(parsedResponse.0, parsedResponse.1)
         }
     }

@@ -17,7 +17,8 @@ class NetworkServiceAcceptanceTests: QuickSpec {
     private var subject: NetworkService!
     private var interface: Network!
     private var responseHandler: ResponseHandler!
-    private var response: ([Plant]?, Error?)?
+    private var multiResponse: ([Plant]?, Error?)?
+    private var singleResponse: (Plant?, Error?)?
     
     override func spec() {
         
@@ -49,26 +50,26 @@ class NetworkServiceAcceptanceTests: QuickSpec {
                 beforeEach {
                     waitUntil { done in
                         self.subject.getPlants(ofTypes: Set(Plant.LightLevel.allCases), completion: { (response, error) in
-                            self.response = (response, error)
+                            self.multiResponse = (response, error)
                             done()
                         })
                     }
                 }
                 
                 afterEach {
-                    self.response = nil
+                    self.multiResponse = nil
                 }
                 
                 it("returns a response") {
-                    expect(self.response).toNot(beNil())
+                    expect(self.multiResponse).toNot(beNil())
                 }
                 
                 it("returns content") {
-                    expect(self.response?.0).toNot(beNil())
+                    expect(self.multiResponse?.0).toNot(beNil())
                 }
                 
                 it("does not return an error") {
-                    expect(self.response?.1).to(beNil())
+                    expect(self.multiResponse?.1).to(beNil())
                 }
             }
             
@@ -77,30 +78,30 @@ class NetworkServiceAcceptanceTests: QuickSpec {
                 beforeEach {
                     waitUntil { done in
                         self.subject.getPlants(ofTypes: Set(arrayLiteral: .low), completion: { (response, error) in
-                            self.response = (response, error)
+                            self.multiResponse = (response, error)
                             done()
                         })
                     }
                 }
                 
                 afterEach {
-                    self.response = nil
+                    self.multiResponse = nil
                 }
                 
                 it("returns a response") {
-                    expect(self.response).toNot(beNil())
+                    expect(self.multiResponse).toNot(beNil())
                 }
                 
                 it("returns content") {
-                    expect(self.response?.0).toNot(beNil())
+                    expect(self.multiResponse?.0).toNot(beNil())
                 }
                 
                 it("returns only low light level plants") {
-                    expect(self.response?.0?.filter({$0.lightRequired != .low})).to(beEmpty())
+                    expect(self.multiResponse?.0?.filter({$0.lightRequired != .low})).to(beEmpty())
                 }
                 
                 it("does not return an error") {
-                    expect(self.response?.1).to(beNil())
+                    expect(self.multiResponse?.1).to(beNil())
                 }
             }
             
@@ -109,30 +110,30 @@ class NetworkServiceAcceptanceTests: QuickSpec {
                 beforeEach {
                     waitUntil { done in
                         self.subject.getPlants(ofTypes: Set(arrayLiteral: .med), completion: { (response, error) in
-                            self.response = (response, error)
+                            self.multiResponse = (response, error)
                             done()
                         })
                     }
                 }
                 
                 afterEach {
-                    self.response = nil
+                    self.multiResponse = nil
                 }
                 
                 it("returns a response") {
-                    expect(self.response).toNot(beNil())
+                    expect(self.multiResponse).toNot(beNil())
                 }
                 
                 it("returns content") {
-                    expect(self.response?.0).toNot(beNil())
+                    expect(self.multiResponse?.0).toNot(beNil())
                 }
                 
                 it("returns only low light level plants") {
-                    expect(self.response?.0?.filter({$0.lightRequired != .med})).to(beEmpty())
+                    expect(self.multiResponse?.0?.filter({$0.lightRequired != .med})).to(beEmpty())
                 }
                 
                 it("does not return an error") {
-                    expect(self.response?.1).to(beNil())
+                    expect(self.multiResponse?.1).to(beNil())
                 }
             }
             
@@ -141,30 +142,30 @@ class NetworkServiceAcceptanceTests: QuickSpec {
                 beforeEach {
                     waitUntil { done in
                         self.subject.getPlants(ofTypes: Set(arrayLiteral: .high), completion: { (response, error) in
-                            self.response = (response, error)
+                            self.multiResponse = (response, error)
                             done()
                         })
                     }
                 }
                 
                 afterEach {
-                    self.response = nil
+                    self.multiResponse = nil
                 }
                 
                 it("returns a response") {
-                    expect(self.response).toNot(beNil())
+                    expect(self.multiResponse).toNot(beNil())
                 }
                 
                 it("returns content") {
-                    expect(self.response?.0).toNot(beNil())
+                    expect(self.multiResponse?.0).toNot(beNil())
                 }
                 
                 it("returns only low light level plants") {
-                    expect(self.response?.0?.filter({$0.lightRequired != .high})).to(beEmpty())
+                    expect(self.multiResponse?.0?.filter({$0.lightRequired != .high})).to(beEmpty())
                 }
                 
                 it("does not return an error") {
-                    expect(self.response?.1).to(beNil())
+                    expect(self.multiResponse?.1).to(beNil())
                 }
             }
             
@@ -173,30 +174,98 @@ class NetworkServiceAcceptanceTests: QuickSpec {
                 beforeEach {
                     waitUntil { done in
                         self.subject.getPlants(ofTypes: Set(arrayLiteral: .low, .high), completion: { (response, error) in
-                            self.response = (response, error)
+                            self.multiResponse = (response, error)
                             done()
                         })
                     }
                 }
                 
                 afterEach {
-                    self.response = nil
+                    self.multiResponse = nil
                 }
                 
                 it("returns a response") {
-                    expect(self.response).toNot(beNil())
+                    expect(self.multiResponse).toNot(beNil())
                 }
                 
                 it("returns content") {
-                    expect(self.response?.0).toNot(beNil())
+                    expect(self.multiResponse?.0).toNot(beNil())
                 }
                 
                 it("returns only low light level plants") {
-                    expect(self.response?.0?.filter({$0.lightRequired != .high && $0.lightRequired != .low})).to(beEmpty())
+                    expect(self.multiResponse?.0?.filter({$0.lightRequired != .high && $0.lightRequired != .low})).to(beEmpty())
                 }
                 
                 it("does not return an error") {
-                    expect(self.response?.1).to(beNil())
+                    expect(self.multiResponse?.1).to(beNil())
+                }
+            }
+        
+        }
+        
+        describe("A NetworkService after querying for available plants") {
+            
+            var availablePlants: [Plant]!
+            
+            beforeSuite {
+                Nimble.AsyncDefaults.Timeout = 5
+            }
+            
+            afterSuite {
+                Nimble.AsyncDefaults.Timeout = 1
+            }
+            
+            beforeEach {
+                let url = URL(string: "https://greenery-nyc-test-dev.herokuapp.com/api/plants")!
+                self.interface = Network(with: url)
+                self.responseHandler = ResponseHandler()
+                self.subject = NetworkService(with: self.interface, responseHandler: self.responseHandler)
+                
+                waitUntil { done in
+                    self.subject.getPlants(ofTypes: Set(Plant.LightLevel.allCases)) { response, error in
+                        assert(response!.count > 0, "there must be plants on the server to run this describe")
+                        availablePlants = response!
+                        done()
+                    }
+                }
+            }
+            
+            afterEach {
+                self.interface = nil
+                self.responseHandler = nil
+                self.subject = nil
+                availablePlants = nil
+            }
+            
+            context("when querying for the details of the first available plant") {
+                
+                beforeEach {
+                    waitUntil { done in
+                        self.subject.getPlant(withId: availablePlants.first!.id) { response, error in
+                            self.singleResponse = (response, error)
+                            done()
+                        }
+                    }
+                }
+                
+                afterEach {
+                    self.singleResponse = nil
+                }
+                
+                it("returns a response") {
+                    expect(self.singleResponse).toNot(beNil())
+                }
+                
+                it("returns content") {
+                    expect(self.singleResponse?.0).toNot(beNil())
+                }
+                
+                it("returns the expected content") {
+                    expect(self.singleResponse?.0) == availablePlants.first
+                }
+                
+                it("does not return an error") {
+                    expect(self.singleResponse?.1).to(beNil())
                 }
             }
         }

@@ -14,6 +14,7 @@
 		27A64F9821EA4E49000C7A6D /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9721EA4E49000C7A6D /* ResponseHandler.swift */; };
 		27A64F9A21EA545C000C7A6D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9921EA545C000C7A6D /* NetworkService.swift */; };
 		27A64F9C21EA55F8000C7A6D /* NetworkServiceAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9B21EA55F8000C7A6D /* NetworkServiceAcceptanceTests.swift */; };
+		27A64F9E21EA6A9B000C7A6D /* JSONEncoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A64F9D21EA6A9B000C7A6D /* JSONEncoderExtension.swift */; };
 		73857CD598FBE702E5AE54A8 /* Pods_greenery_nyc_client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E330AA29016EE5C399E552 /* Pods_greenery_nyc_client.framework */; };
 		B3ABB2C6505051824ADAF956 /* Pods_greenery_nyc_clientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC3771DBB03F2C1DDBFB69E /* Pods_greenery_nyc_clientTests.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 		27A64F9721EA4E49000C7A6D /* ResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
 		27A64F9921EA545C000C7A6D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		27A64F9B21EA55F8000C7A6D /* NetworkServiceAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceAcceptanceTests.swift; sourceTree = "<group>"; };
+		27A64F9D21EA6A9B000C7A6D /* JSONEncoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoderExtension.swift; sourceTree = "<group>"; };
 		A90C02D21E5976CFD3CC444E /* Pods-greenery_nyc_clientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greenery_nyc_clientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-greenery_nyc_clientTests/Pods-greenery_nyc_clientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AFC3771DBB03F2C1DDBFB69E /* Pods_greenery_nyc_clientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_greenery_nyc_clientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7E69F7ECFCA824B63DBB571 /* Pods-greenery_nyc_client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greenery_nyc_client.release.xcconfig"; path = "Pods/Target Support Files/Pods-greenery_nyc_client/Pods-greenery_nyc_client.release.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				27A64F9521EA4DAB000C7A6D /* Plant.swift */,
 				27A64F9721EA4E49000C7A6D /* ResponseHandler.swift */,
 				27A64F9921EA545C000C7A6D /* NetworkService.swift */,
+				27A64F9D21EA6A9B000C7A6D /* JSONEncoderExtension.swift */,
 			);
 			path = greenery_nyc_client;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27A64F9E21EA6A9B000C7A6D /* JSONEncoderExtension.swift in Sources */,
 				27A64F9421EA4D5F000C7A6D /* Network.swift in Sources */,
 				27A64F9821EA4E49000C7A6D /* ResponseHandler.swift in Sources */,
 				27A64F9A21EA545C000C7A6D /* NetworkService.swift in Sources */,
