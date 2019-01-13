@@ -74,8 +74,8 @@ extension NetworkParser : NetworkParserInterface {
         guard let data = response.data else {return (nil, response.error)}
         
         do {
-            let content = try NetworkParser.decoder.decode(Plant.self, from: data)
-            return (content, response.error)
+            let content = try NetworkParser.decoder.decode(PlantResponse.self, from: data)
+            return (content.plant, response.error)
         } catch {
             return (nil, error)
         }
@@ -91,7 +91,7 @@ extension NetworkParser : NetworkParserInterface {
     }
     
     func payload(for plant: Plant) -> [String : Any] {
-        let newElement = PlantPayload.Element(name: "Test", light_required: .med)
+        let newElement = PlantPayload.Element(name: plant.name, light_required: plant.lightRequired)
         let payload = try! NetworkParser.encoder.encodeAsDictionary(PlantPayload(plant: newElement))
         return payload
     }

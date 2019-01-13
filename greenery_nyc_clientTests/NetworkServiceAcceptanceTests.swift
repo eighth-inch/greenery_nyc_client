@@ -287,7 +287,7 @@ class NetworkServiceAcceptanceTests: QuickSpec {
                 
                 afterEach {
                     waitUntil { done in
-                        guard let plantToDelete = newlyCreatedPlant else {return}
+                        guard let plantToDelete = newlyCreatedPlant else {done(); return}
                         self.subject.delete(plantToDelete) {error in
                             print(error?.localizedDescription ?? "deleted test plant successfully")
                             done()
